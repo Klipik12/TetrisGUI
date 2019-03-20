@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace TetrisGUI
 {
@@ -27,6 +28,7 @@ namespace TetrisGUI
             numRows = Int32.Parse(TxtRows.Text);
             Form2 game = new Form2();
             game.Show();
+            this.Hide();
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
@@ -42,10 +44,12 @@ namespace TetrisGUI
         private void BtLoad_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Loading Saved Game...");
-            numCols = 6;
-            numRows = 7;
+            numCols = 7;
+            numRows = 6;
             Form2 game = new Form2();
             game.Show();
+            Thread.Sleep(500);
+            this.Hide();
         }
     }
 }

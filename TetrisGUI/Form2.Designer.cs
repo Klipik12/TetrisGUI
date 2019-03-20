@@ -30,169 +30,121 @@
         {
             this.LblTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.BtQuit = new System.Windows.Forms.Button();
-            this.BtSaveQuit = new System.Windows.Forms.Button();
-            this.BtCol1 = new System.Windows.Forms.Button();
-            this.BtCol2 = new System.Windows.Forms.Button();
-            this.BtCol3 = new System.Windows.Forms.Button();
-            this.BtCol4 = new System.Windows.Forms.Button();
-            this.BtCol5 = new System.Windows.Forms.Button();
-            this.BtCol6 = new System.Windows.Forms.Button();
-            this.BtCol7 = new System.Windows.Forms.Button();
             this.saveGame = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuNewGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuSaveGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveQuitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblTitle
             // 
             this.LblTitle.AutoSize = true;
             this.LblTitle.Font = new System.Drawing.Font("Bauhaus 93", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitle.Location = new System.Drawing.Point(310, 91);
+            this.LblTitle.Location = new System.Drawing.Point(276, 73);
             this.LblTitle.Name = "LblTitle";
-            this.LblTitle.Size = new System.Drawing.Size(335, 54);
+            this.LblTitle.Size = new System.Drawing.Size(279, 45);
             this.LblTitle.TabIndex = 1;
             this.LblTitle.Text = "Connect Tetris";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gold;
-            this.panel1.Location = new System.Drawing.Point(147, 180);
+            this.panel1.Location = new System.Drawing.Point(131, 144);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(670, 447);
+            this.panel1.Size = new System.Drawing.Size(596, 358);
             this.panel1.TabIndex = 2;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // BtQuit
-            // 
-            this.BtQuit.Font = new System.Drawing.Font("Gill Sans MT", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtQuit.Location = new System.Drawing.Point(147, 708);
-            this.BtQuit.Name = "BtQuit";
-            this.BtQuit.Size = new System.Drawing.Size(179, 64);
-            this.BtQuit.TabIndex = 3;
-            this.BtQuit.Text = "Quit";
-            this.BtQuit.UseVisualStyleBackColor = true;
-            this.BtQuit.Click += new System.EventHandler(this.BtQuit_Click);
-            // 
-            // BtSaveQuit
-            // 
-            this.BtSaveQuit.Font = new System.Drawing.Font("Gill Sans MT", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtSaveQuit.Location = new System.Drawing.Point(592, 708);
-            this.BtSaveQuit.Name = "BtSaveQuit";
-            this.BtSaveQuit.Size = new System.Drawing.Size(225, 64);
-            this.BtSaveQuit.TabIndex = 4;
-            this.BtSaveQuit.Text = "Save + Quit";
-            this.BtSaveQuit.UseVisualStyleBackColor = true;
-            this.BtSaveQuit.Click += new System.EventHandler(this.BtSaveQuit_Click);
-            // 
-            // BtCol1
-            // 
-            this.BtCol1.BackColor = System.Drawing.Color.Red;
-            this.BtCol1.Font = new System.Drawing.Font("Gill Sans MT", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtCol1.Location = new System.Drawing.Point(147, 633);
-            this.BtCol1.Name = "BtCol1";
-            this.BtCol1.Size = new System.Drawing.Size(62, 52);
-            this.BtCol1.TabIndex = 5;
-            this.BtCol1.Text = "1";
-            this.BtCol1.UseVisualStyleBackColor = false;
-            this.BtCol1.Click += new System.EventHandler(this.BtCol1_Click);
-            // 
-            // BtCol2
-            // 
-            this.BtCol2.BackColor = System.Drawing.Color.Red;
-            this.BtCol2.Font = new System.Drawing.Font("Gill Sans MT", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtCol2.Location = new System.Drawing.Point(254, 633);
-            this.BtCol2.Name = "BtCol2";
-            this.BtCol2.Size = new System.Drawing.Size(62, 52);
-            this.BtCol2.TabIndex = 6;
-            this.BtCol2.Text = "2";
-            this.BtCol2.UseVisualStyleBackColor = false;
-            this.BtCol2.Click += new System.EventHandler(this.BtCol2_Click);
-            // 
-            // BtCol3
-            // 
-            this.BtCol3.BackColor = System.Drawing.Color.Red;
-            this.BtCol3.Font = new System.Drawing.Font("Gill Sans MT", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtCol3.Location = new System.Drawing.Point(352, 633);
-            this.BtCol3.Name = "BtCol3";
-            this.BtCol3.Size = new System.Drawing.Size(62, 52);
-            this.BtCol3.TabIndex = 7;
-            this.BtCol3.Text = "3";
-            this.BtCol3.UseVisualStyleBackColor = false;
-            this.BtCol3.Click += new System.EventHandler(this.BtCol3_Click);
-            // 
-            // BtCol4
-            // 
-            this.BtCol4.BackColor = System.Drawing.Color.Red;
-            this.BtCol4.Font = new System.Drawing.Font("Gill Sans MT", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtCol4.Location = new System.Drawing.Point(453, 633);
-            this.BtCol4.Name = "BtCol4";
-            this.BtCol4.Size = new System.Drawing.Size(62, 52);
-            this.BtCol4.TabIndex = 8;
-            this.BtCol4.Text = "4";
-            this.BtCol4.UseVisualStyleBackColor = false;
-            this.BtCol4.Click += new System.EventHandler(this.BtCol4_Click);
-            // 
-            // BtCol5
-            // 
-            this.BtCol5.BackColor = System.Drawing.Color.Red;
-            this.BtCol5.Font = new System.Drawing.Font("Gill Sans MT", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtCol5.Location = new System.Drawing.Point(552, 633);
-            this.BtCol5.Name = "BtCol5";
-            this.BtCol5.Size = new System.Drawing.Size(62, 52);
-            this.BtCol5.TabIndex = 9;
-            this.BtCol5.Text = "5";
-            this.BtCol5.UseVisualStyleBackColor = false;
-            this.BtCol5.Click += new System.EventHandler(this.BtCol5_Click);
-            // 
-            // BtCol6
-            // 
-            this.BtCol6.BackColor = System.Drawing.Color.Red;
-            this.BtCol6.Font = new System.Drawing.Font("Gill Sans MT", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtCol6.Location = new System.Drawing.Point(650, 633);
-            this.BtCol6.Name = "BtCol6";
-            this.BtCol6.Size = new System.Drawing.Size(62, 52);
-            this.BtCol6.TabIndex = 10;
-            this.BtCol6.Text = "6";
-            this.BtCol6.UseVisualStyleBackColor = false;
-            this.BtCol6.Click += new System.EventHandler(this.BtCol6_Click);
-            // 
-            // BtCol7
-            // 
-            this.BtCol7.BackColor = System.Drawing.Color.Red;
-            this.BtCol7.Font = new System.Drawing.Font("Gill Sans MT", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtCol7.Location = new System.Drawing.Point(755, 633);
-            this.BtCol7.Name = "BtCol7";
-            this.BtCol7.Size = new System.Drawing.Size(62, 52);
-            this.BtCol7.TabIndex = 11;
-            this.BtCol7.Text = "7";
-            this.BtCol7.UseVisualStyleBackColor = false;
-            this.BtCol7.Click += new System.EventHandler(this.BtCol7_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(891, 28);
+            this.menuStrip1.TabIndex = 12;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuNewGame,
+            this.MenuSaveGame,
+            this.loadGameToolStripMenuItem,
+            this.saveQuitToolStripMenuItem,
+            this.quitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // MenuNewGame
+            // 
+            this.MenuNewGame.Name = "MenuNewGame";
+            this.MenuNewGame.ShortcutKeyDisplayString = "Ctrl + N";
+            this.MenuNewGame.Size = new System.Drawing.Size(270, 26);
+            this.MenuNewGame.Text = "&New Game";
+            this.MenuNewGame.Click += new System.EventHandler(this.MenuNewGame_Click);
+            // 
+            // MenuSaveGame
+            // 
+            this.MenuSaveGame.Name = "MenuSaveGame";
+            this.MenuSaveGame.ShortcutKeyDisplayString = "Ctrl + S";
+            this.MenuSaveGame.Size = new System.Drawing.Size(270, 26);
+            this.MenuSaveGame.Text = "&Save Game";
+            this.MenuSaveGame.Click += new System.EventHandler(this.MenuSaveGame_Click);
+            // 
+            // loadGameToolStripMenuItem
+            // 
+            this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
+            this.loadGameToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + L";
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
+            this.loadGameToolStripMenuItem.Text = "&Load Game";
+            // 
+            // saveQuitToolStripMenuItem
+            // 
+            this.saveQuitToolStripMenuItem.Name = "saveQuitToolStripMenuItem";
+            this.saveQuitToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Shift + Q";
+            this.saveQuitToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
+            this.saveQuitToolStripMenuItem.Text = "Save + Quit";
+            this.saveQuitToolStripMenuItem.Click += new System.EventHandler(this.saveQuitToolStripMenuItem_Click);
+            // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Q";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
+            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
+            // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(1002, 784);
-            this.Controls.Add(this.BtCol7);
-            this.Controls.Add(this.BtCol6);
-            this.Controls.Add(this.BtCol5);
-            this.Controls.Add(this.BtCol4);
-            this.Controls.Add(this.BtCol3);
-            this.Controls.Add(this.BtCol2);
-            this.Controls.Add(this.BtCol1);
-            this.Controls.Add(this.BtSaveQuit);
-            this.Controls.Add(this.BtQuit);
+            this.ClientSize = new System.Drawing.Size(891, 627);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LblTitle);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,16 +153,14 @@
         #endregion
         private System.Windows.Forms.Label LblTitle;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button BtQuit;
-        private System.Windows.Forms.Button BtSaveQuit;
-        private System.Windows.Forms.Button BtCol1;
-        private System.Windows.Forms.Button BtCol2;
-        private System.Windows.Forms.Button BtCol3;
-        private System.Windows.Forms.Button BtCol4;
-        private System.Windows.Forms.Button BtCol5;
-        private System.Windows.Forms.Button BtCol6;
-        private System.Windows.Forms.Button BtCol7;
         private System.Windows.Forms.SaveFileDialog saveGame;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuNewGame;
+        private System.Windows.Forms.ToolStripMenuItem MenuSaveGame;
+        private System.Windows.Forms.ToolStripMenuItem saveQuitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadGameToolStripMenuItem;
     }
 }
