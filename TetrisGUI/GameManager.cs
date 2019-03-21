@@ -1,10 +1,8 @@
 ﻿///<summary>
 /// Written by: Charley Bein, Ben Tipton
 /// File Summary: Manager for all primary game logic
-/// (General info in Program.cs)
 /// </summary>
 
-using System;
 using System.Collections.Generic;
 
 namespace TetrisGUI
@@ -18,21 +16,12 @@ namespace TetrisGUI
         public int winstate = 0;
         public LinkedList<Token[]> rowlist = new LinkedList<Token[]>();
 
-        // When manager is initialized, create an empty game board with edges of color -1
-        //public GameManager()
-        //{
-        //    int i = 0;
-            
-        //    Token[] edgeArr = { new Token(-1), new Token(-1), new Token(-1), new Token(-1), new Token(-1), new Token(-1), new Token(-1), new Token(-1), new Token(-1) };
-        //    do
-        //    {
-        //        Token[] inArr = { new Token(-1), new Token(), new Token(), new Token(), new Token(), new Token(), new Token(), new Token(), new Token(-1) };
-        //        rowlist.AddLast(inArr);
-        //        i++;
-        //    } while (i < height);
-        //    rowlist.AddFirst(edgeArr);
-        //    rowlist.AddLast(edgeArr);
-        //}
+
+        /// <summary>
+        /// When manager is initialized, create an empty game board with edges of color -1
+        /// </summary>
+        /// <param name="h">Height of the gameboard</param>
+        /// <param name="w">width of the gameboard</param>
         public GameManager(int h, int w)
         {
             height = h;
@@ -65,8 +54,14 @@ namespace TetrisGUI
                 rowlist.AddLast(tokens);
             }
         }
-        
-        // When called, add a token of the appropriate color at the first available spot in the given position, and carry out logic
+
+
+        /// <summary>
+        /// When called, add a token of the appropriate color at the first available spot in the given position, and carry out logic
+        /// </summary>
+        /// <param name="position">Horizontal position of the token</param>
+        /// <param name="color">Color of the token</param>
+        /// <returns>Game State (-1 = full, 0 = normal, 1 = player 1 wins, 2 = player 2 wins)</returns>
         public int AddToken(int position, int color)
         {
             LinkedListNode<Token[]> firstRow = rowlist.First;
@@ -108,7 +103,14 @@ namespace TetrisGUI
 
         }
 
-        // Recursively check each row in the position from the bottom up until an available one is found, and return that
+
+        /// <summary>
+        /// Recursively check each row in the position from the bottom up until an available one is found, and return that
+        /// </summary>
+        /// <param name="position">Horizontal position of token</param>
+        /// <param name="row">Active row in recursion</param>
+        /// <param name="pColor">Color of active color</param>
+        /// <returns>On completion of recursion, lowest row with an availbale space in specified column</returns>
         private LinkedListNode<Token[]> AddWrapper(int position, ref LinkedListNode<Token[]> row, int pColor)
         {
             LinkedListNode<Token[]> next = row.Next;
@@ -124,26 +126,32 @@ namespace TetrisGUI
             }
         }
 
-        // Pass an array of the game board to the IO manager to be drawn
+
+        /// <summary>
+        /// Generates 2D array from game board to be passed out
+        /// </summary>
+        /// <returns>Static  2D array of game board</returns>
         public int[,] ToDraw()
         {
             int[,] colorArray = new int[height + 2,width + 2];
             int i = 0;
             foreach(Token[] t in rowlist)
             {
-                for(int j = 0; j < width; j++)
+                for(int j = 0; j < width + 2; j++)
                 {
                     colorArray[i, j] = t[j].GetColor();
                 }
                 i++;
             }
             return colorArray;
-            //IOManager.Draw(colorArray);
 
         }
 
-
-        // Check each token in the first row to see if it is filled, and return that answer
+ 
+        /// <summary>
+        /// Check each token in the first row to see if it is filled, and return that answer
+        /// </summary>
+        /// <returns>Whether the row is full</returns>
         private bool CheckFilled()
         {
             bool filled = true;
@@ -154,7 +162,9 @@ namespace TetrisGUI
             return filled;
         }
 
-        // Delete the bottom game row, and add a new one to the top to keep the size consistent
+        /// <summary>
+        /// .Delete the bottom game row, and add a new one to the top to keep the size consistent
+        /// </summary>
         private void DeleteRow()
         {
             LinkedListNode<Token[]> firstRow = rowlist.First.Next;

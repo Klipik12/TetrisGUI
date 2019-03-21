@@ -1,7 +1,6 @@
 ﻿///<summary>
 /// Written by: Charley Bein, Ben Tipton
 /// File Summary: Class of static methods to take input and display output
-/// (General info in Program.cs)
 /// </summary>
 using System;
 
@@ -9,38 +8,15 @@ namespace TetrisGUI
 {
     class IOManager
     {
-        // Draw the given array to the console
-        //public static void Draw(int[,] grid)
-        //{
-        //    Console.Clear();
-        //    for (int i = 1; i <= GameManager.width; i++)
-        //    {
-        //        Console.Write("| {0} ", i);
-        //    }
-        //    Console.WriteLine("|");
-        //    Console.WriteLine(" ----------------------------");
-        //    for(int i = GameManager.height ; i > 0; i--)
-        //    {
-        //        for(int j = 1; j < GameManager.width + 1; j++)
-        //        {
-        //            Console.Write("| {0} ", grid[i, j]);
-        //        }
-        //        Console.Write("|\n");
-        //    }
-        //}
-
-        // Take user input to get the position, and pass it to the game manager
+        /// <summary>
+        /// Pass the selected column number from the GUI to the game manager
+        /// </summary>
+        /// <param name="col">Selected column number</param>
+        /// <param name="game">The game manager in use</param>
+        /// <param name="playerOne">The currently active player (true = player 1, false = player 2)</param>
+        /// <returns>Game State (-1 = full row, 0 = neutral, 1 = player 1 wins, 2 = player 2 wins)</returns>
         public static int NewMove(int col, GameManager game, bool playerOne)
         {
-            //int player = turnNo % 2 + 1;
-            //Console.Write("Player {0}, make your move ", player);
-            //string playString = Console.ReadLine();
-            //if(String.Equals(playString, "save", StringComparison.CurrentCultureIgnoreCase))
-            //{
-            //    return -1;
-            //}
-            //int play = Int32.Parse(playString);
-            //return game.AddToken(play, player);
             if (playerOne)
             {
                 return game.AddToken(col, 1);

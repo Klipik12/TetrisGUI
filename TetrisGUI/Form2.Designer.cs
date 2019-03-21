@@ -62,9 +62,16 @@
             this.panel1.TabIndex = 2;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // saveGame
+            // 
+            this.saveGame.DefaultExt = "xml";
+            this.saveGame.Filter = "XML files|*.xml|All files|*.*";
+            this.saveGame.RestoreDirectory = true;
+            // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.DefaultExt = "xml";
+            this.openFileDialog1.Filter = "XML File |*.xml|Any File |*.*";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // menuStrip1
@@ -109,16 +116,17 @@
             // loadGameToolStripMenuItem
             // 
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
-            this.loadGameToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + L";
+            this.loadGameToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + O";
             this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
-            this.loadGameToolStripMenuItem.Text = "&Load Game";
+            this.loadGameToolStripMenuItem.Text = "L&oad Game";
+            this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameToolStripMenuItem_Click);
             // 
             // saveQuitToolStripMenuItem
             // 
             this.saveQuitToolStripMenuItem.Name = "saveQuitToolStripMenuItem";
             this.saveQuitToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Shift + Q";
             this.saveQuitToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
-            this.saveQuitToolStripMenuItem.Text = "Save + Quit";
+            this.saveQuitToolStripMenuItem.Text = "Sa&ve + Quit";
             this.saveQuitToolStripMenuItem.Click += new System.EventHandler(this.saveQuitToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
@@ -126,7 +134,7 @@
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
             this.quitToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Q";
             this.quitToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
-            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Text = "&Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
             // Form2
@@ -138,11 +146,14 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LblTitle);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form2_KeyUp);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
