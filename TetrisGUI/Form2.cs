@@ -17,6 +17,7 @@ namespace TetrisGUI
 {
     public partial class Form2 : Form
     {
+        
         public int numCols = Form1.numCols;
         public int numRows = Form1.numRows;
 
@@ -24,6 +25,10 @@ namespace TetrisGUI
         private GameManager gameManager;
         private List<Button> buttons = null;
         private Stream stream = null;
+        private int countDownTime = 60;
+        private int turnTime = 60;
+        private int totalGameTime = 0;
+
 
         /// <summary>
         /// Constructor initializes the components, attaches controls, and then populates the GUI
@@ -34,10 +39,12 @@ namespace TetrisGUI
             this.FormClosing += Form2_FormClosing;
             this.KeyDown += Form2_KeyDown;
             popLoad(Form1.save);
+            TurnTimer.Tick += new EventHandler(TurnTimer_Tick);
+            PlayTime.Tick += new EventHandler(PlayTime_Tick);
+            lblCountDownTimer.Text = ":" + (countDownTime/2).ToString();
 
-            
         }
-        
+
         private void Form2_KeyDown(object sender, KeyEventArgs e)
         {
             
@@ -138,7 +145,7 @@ namespace TetrisGUI
             b.Text = i.ToString();
             b.Width = panel1.Width / numCols - 10;
             b.Height = b.Width / 2;
-            b.Left = panel1.Left + 75 * (i-1) + 5;
+            b.Left = panel1.Left + b.Width * (i-1) + 5;
             b.Top = panel1.Bottom + 10;
             b.TextAlign = ContentAlignment.MiddleCenter;
             b.BringToFront();
@@ -160,6 +167,7 @@ namespace TetrisGUI
             int outcome = IOManager.NewMove(i, gameManager, playerOne);
             this.Refresh();
             // Depending on the outcome passed back, display that the column is full or that player 1 or 2 won
+            TurnTimer.Stop();
             if (outcome == -1)
             {
                 MessageBox.Show("Column full, pick another");
@@ -175,6 +183,9 @@ namespace TetrisGUI
                 MessageBox.Show("Player 2 Wins!");
                 Application.Exit();
             }
+            TurnTimer.Start();
+            countDownTime = turnTime;
+            lblCountDownTimer.Text = ":" + (countDownTime / 2).ToString();
             this.Refresh();
         }
 
@@ -190,10 +201,13 @@ namespace TetrisGUI
                 {
                     buttons[i].BackColor = Color.Red;
                     buttons[i].ForeColor = Color.Black;
+                    lblCountDownTitle.ForeColor = Color.Red;
                 } else
                 {
                     buttons[i].BackColor = Color.Black;
                     buttons[i].ForeColor = Color.White;
+                    lblCountDownTitle.ForeColor = Color.Black;
+
                 }
             }
         }
@@ -360,6 +374,36 @@ namespace TetrisGUI
         private void loadGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LoadGame();
+        }
+
+
+
+        private void TurnTimer_Tick(object sender, EventArgs e)
+        {
+            TurnTimer.Stop();
+            if (countDownTime<=0)
+            {
+                playerOne = !playerOne;
+                countDownTime = turnTime;
+                switchColor();
+            }
+            else
+            {
+                countDownTime--;
+            }
+            lblCountDownTimer.Text = ":"+(countDownTime/2).ToString();
+            TurnTimer.Start();
+        }
+
+        private void lblTotalTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PlayTime_Tick(object sender, EventArgs e)
+        {
+            totalGameTime++;
+            TotalTimeDisplay.Text = (totalGameTime/2).ToString() + " Seconds";
         }
     }
 }

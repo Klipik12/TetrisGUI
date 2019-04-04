@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.LblTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.saveGame = new System.Windows.Forms.SaveFileDialog();
@@ -39,6 +40,13 @@
             this.loadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveQuitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TurnTimer = new System.Windows.Forms.Timer(this.components);
+            this.lblCountDownTitle = new System.Windows.Forms.Label();
+            this.lblCountDownTimer = new System.Windows.Forms.Label();
+            this.PlayTime = new System.Windows.Forms.Timer(this.components);
+            this.TotalTimeDisplay = new System.Windows.Forms.Label();
+            this.lblTotalTime = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,19 +54,19 @@
             // 
             this.LblTitle.AutoSize = true;
             this.LblTitle.Font = new System.Drawing.Font("Bauhaus 93", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitle.Location = new System.Drawing.Point(276, 73);
+            this.LblTitle.Location = new System.Drawing.Point(310, 91);
             this.LblTitle.Name = "LblTitle";
-            this.LblTitle.Size = new System.Drawing.Size(279, 45);
+            this.LblTitle.Size = new System.Drawing.Size(335, 54);
             this.LblTitle.TabIndex = 1;
             this.LblTitle.Text = "Connect Tetris";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gold;
-            this.panel1.Location = new System.Drawing.Point(131, 144);
+            this.panel1.Location = new System.Drawing.Point(147, 180);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(596, 358);
+            this.panel1.Size = new System.Drawing.Size(670, 448);
             this.panel1.TabIndex = 2;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -81,7 +89,8 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(891, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1002, 33);
             this.menuStrip1.TabIndex = 12;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -94,14 +103,14 @@
             this.saveQuitToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(50, 29);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // MenuNewGame
             // 
             this.MenuNewGame.Name = "MenuNewGame";
             this.MenuNewGame.ShortcutKeyDisplayString = "Ctrl + N";
-            this.MenuNewGame.Size = new System.Drawing.Size(270, 26);
+            this.MenuNewGame.Size = new System.Drawing.Size(322, 30);
             this.MenuNewGame.Text = "&New Game";
             this.MenuNewGame.Click += new System.EventHandler(this.MenuNewGame_Click);
             // 
@@ -109,7 +118,7 @@
             // 
             this.MenuSaveGame.Name = "MenuSaveGame";
             this.MenuSaveGame.ShortcutKeyDisplayString = "Ctrl + S";
-            this.MenuSaveGame.Size = new System.Drawing.Size(270, 26);
+            this.MenuSaveGame.Size = new System.Drawing.Size(322, 30);
             this.MenuSaveGame.Text = "&Save Game";
             this.MenuSaveGame.Click += new System.EventHandler(this.MenuSaveGame_Click);
             // 
@@ -117,7 +126,7 @@
             // 
             this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
             this.loadGameToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + O";
-            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(322, 30);
             this.loadGameToolStripMenuItem.Text = "L&oad Game";
             this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameToolStripMenuItem_Click);
             // 
@@ -125,7 +134,7 @@
             // 
             this.saveQuitToolStripMenuItem.Name = "saveQuitToolStripMenuItem";
             this.saveQuitToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Shift + Q";
-            this.saveQuitToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
+            this.saveQuitToolStripMenuItem.Size = new System.Drawing.Size(322, 30);
             this.saveQuitToolStripMenuItem.Text = "Sa&ve + Quit";
             this.saveQuitToolStripMenuItem.Click += new System.EventHandler(this.saveQuitToolStripMenuItem_Click);
             // 
@@ -133,16 +142,84 @@
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
             this.quitToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl + Q";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(270, 26);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(322, 30);
             this.quitToolStripMenuItem.Text = "&Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
+            // TurnTimer
+            // 
+            this.TurnTimer.Enabled = true;
+            this.TurnTimer.Interval = 1000;
+            this.TurnTimer.Tick += new System.EventHandler(this.TurnTimer_Tick);
+            // 
+            // lblCountDownTitle
+            // 
+            this.lblCountDownTitle.AutoSize = true;
+            this.lblCountDownTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountDownTitle.Location = new System.Drawing.Point(676, 131);
+            this.lblCountDownTitle.Name = "lblCountDownTitle";
+            this.lblCountDownTitle.Size = new System.Drawing.Size(141, 29);
+            this.lblCountDownTitle.TabIndex = 13;
+            this.lblCountDownTitle.Text = "Turn Time:";
+            // 
+            // lblCountDownTimer
+            // 
+            this.lblCountDownTimer.AutoSize = true;
+            this.lblCountDownTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCountDownTimer.Location = new System.Drawing.Point(823, 131);
+            this.lblCountDownTimer.Name = "lblCountDownTimer";
+            this.lblCountDownTimer.Size = new System.Drawing.Size(48, 29);
+            this.lblCountDownTimer.TabIndex = 14;
+            this.lblCountDownTimer.Text = ":30";
+            // 
+            // PlayTime
+            // 
+            this.PlayTime.Enabled = true;
+            this.PlayTime.Interval = 1000;
+            this.PlayTime.Tick += new System.EventHandler(this.PlayTime_Tick);
+            // 
+            // TotalTimeDisplay
+            // 
+            this.TotalTimeDisplay.AutoSize = true;
+            this.TotalTimeDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalTimeDisplay.Location = new System.Drawing.Point(94, 131);
+            this.TotalTimeDisplay.Name = "TotalTimeDisplay";
+            this.TotalTimeDisplay.Size = new System.Drawing.Size(136, 29);
+            this.TotalTimeDisplay.TabIndex = 16;
+            this.TotalTimeDisplay.Text = "0 Seconds";
+            // 
+            // lblTotalTime
+            // 
+            this.lblTotalTime.AutoSize = true;
+            this.lblTotalTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalTime.Location = new System.Drawing.Point(50, 65);
+            this.lblTotalTime.Name = "lblTotalTime";
+            this.lblTotalTime.Size = new System.Drawing.Size(216, 29);
+            this.lblTotalTime.TabIndex = 15;
+            this.lblTotalTime.Text = "Total Game Time";
+            this.lblTotalTime.Click += new System.EventHandler(this.lblTotalTime_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(65, 102);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(190, 29);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "(This Session):";
+            // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(891, 627);
+            this.ClientSize = new System.Drawing.Size(1002, 784);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.TotalTimeDisplay);
+            this.Controls.Add(this.lblTotalTime);
+            this.Controls.Add(this.lblCountDownTimer);
+            this.Controls.Add(this.lblCountDownTitle);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LblTitle);
             this.Controls.Add(this.menuStrip1);
@@ -173,5 +250,12 @@
         private System.Windows.Forms.ToolStripMenuItem saveQuitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadGameToolStripMenuItem;
+        private System.Windows.Forms.Timer TurnTimer;
+        private System.Windows.Forms.Label lblCountDownTitle;
+        private System.Windows.Forms.Label lblCountDownTimer;
+        private System.Windows.Forms.Timer PlayTime;
+        private System.Windows.Forms.Label TotalTimeDisplay;
+        private System.Windows.Forms.Label lblTotalTime;
+        private System.Windows.Forms.Label label1;
     }
 }
