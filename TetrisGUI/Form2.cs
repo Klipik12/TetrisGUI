@@ -2,7 +2,6 @@
 /// Project Name: TetrisGUI
 /// File Name: Form2.cs
 /// Written by: Charley Bein and Ben Tipton
-/// Date: 2019-03-19
 /// Description: Holds logic for the gameplay GUI
 /// </summary>
 using System;
@@ -25,7 +24,9 @@ namespace TetrisGUI
         private GameManager gameManager;
         private List<Button> buttons = null;
         private Stream stream = null;
+        //Holds the turn timer current value
         private int countDownTime = 60;
+        //Maximum value for resetting turn timer
         private int turnTime = 60;
         private int totalGameTime = 0;
 
@@ -377,7 +378,11 @@ namespace TetrisGUI
         }
 
 
-
+        /// <summary>
+        /// Every tick of TurnTimer (set to 1000 ms), check if the timer has expired, and if so, switch turns
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TurnTimer_Tick(object sender, EventArgs e)
         {
             TurnTimer.Stop();
@@ -391,6 +396,7 @@ namespace TetrisGUI
             {
                 countDownTime--;
             }
+            // For reasons that we could not discern, countDownTime decreases by 2 every tick, so we set the max to double the intended time and half the value when displaying it
             lblCountDownTimer.Text = ":"+(countDownTime/2).ToString();
             TurnTimer.Start();
         }
@@ -400,9 +406,15 @@ namespace TetrisGUI
 
         }
 
+        /// <summary>
+        /// Displays the number of seconds elapsed during the current play session
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PlayTime_Tick(object sender, EventArgs e)
         {
             totalGameTime++;
+            // For the same reason as the turn timer, the value must be halved before displaying to give an accurate number
             TotalTimeDisplay.Text = (totalGameTime/2).ToString() + " Seconds";
         }
     }
